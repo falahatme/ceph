@@ -24,12 +24,14 @@ in All nodes:
 
 ```
 
-cat <<EOF > print.sh
+cat <<EOF >> /etc/hosts
+
 192.168.182.128 ceph-admin
 192.168.182.130 mon1
 192.168.182.131 osd1
 192.168.182.132 osd2
 192.168.182.133 osd3
+
 EOF
 
 ```
