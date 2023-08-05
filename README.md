@@ -6,13 +6,13 @@
 
 ====================================
 
-    Ceph Admin:     192.168.182.128
-    Ceph Monitor1:  192.168.182.130
+    Ceph Admin:     192.168.182.128 (hostname: ceph-admin)
+    Ceph Monitor1:  192.168.182.130 (hostname: mon1)
     
     Ceph Object Storage Devices: 3
-                    192.168.182.131
-                    192.168.182.132
-                    192.168.182.133
+                    192.168.182.131 (hostname: osd1)
+                    192.168.182.132 (hostname: osd2)
+                    192.168.182.133 (hostname: osd3)
 
     Ceph Client:    192.168.182.134
 
