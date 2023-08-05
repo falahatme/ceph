@@ -2,8 +2,9 @@
 
 ![image](https://github.com/falahatme/ceph/assets/7458874/788d19ad-a9ec-4757-be2d-17ce78b5dccc)
 
+# Nodes:
+
 ====================================
-Nodes:
 
     Ceph Admin:     192.168.182.128
     Ceph Monitor1:  192.168.182.130
@@ -17,7 +18,7 @@ Nodes:
 
 ====================================
 
-# Hosts:
+# Define Hosts:
 
 in All nodes:
 
