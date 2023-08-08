@@ -24,6 +24,9 @@ in All nodes:
 
 ```
 
+# modify /etc/selinux/config
+# set SELINUX=disabled
+
 cat <<EOF >> /etc/hosts
 
 192.168.182.128 ceph-admin
@@ -36,3 +39,53 @@ EOF
 
 ```
 
+# Generate SSH in Admin
+
+on ceph-admin:
+
+```
+
+cat <<EOF >> ~/.ssh/config
+
+Host  ceph-admin
+        Hostname    ceph-admin
+        User        cephuser
+
+Host  mon1
+        Hostname    mon1
+        User        cephuser
+
+Host  osd1
+        Hostname    osd1
+        User        cephuser
+
+Host  osd2
+        Hostname    osd2
+        User        cephuser
+
+Host  osd3
+        Hostname    osd3
+        User        cephuser
+
+Host  client
+        Hostname    client
+        User        cephuser
+
+EOF
+
+sudo chmod 644 ~/.ssh/config
+
+sudo ssh-keyscan osd1 osd2 osd3 mon1 client >> ~/.ssh/known_hosts
+
+ssh-keygen
+
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd1
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd2
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd3
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub mon1
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub client
+
+
+
+
+```
