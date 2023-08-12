@@ -2,6 +2,52 @@
 
 ![image](https://github.com/falahatme/ceph/assets/7458874/788d19ad-a9ec-4757-be2d-17ce78b5dccc)
 
+
+Production nodes recommendation:
+
+## Mon-Mgr:
+```
+  Processor:        Processor with four logical cores
+  RAM:              24GB+ per daemon
+  Disk Space:       60 GB per daemon SSD with RAID1
+  Network:          Two network interfaces (1GbE+) bonded to multiple switches
+```
+
+## Ceph OSD Node:
+```
+  Processor:        1 core per 1000-3000 IOPS
+  RAM:              4GB+ per daemon (more is better) 16GB per OSD host
+  DB/WAL:           1x SSD partition per daemon (optional)
+  Volume Storage    1x storage driver per daemon
+  Nodes             Minimum of three nodes required
+  Network           1x 1GbE+ NICs (10GbE+ recommended)
+```
+
+## Metadata Server Node:
+```
+  Processor         2.5 GHz CPU with at least 2 cores
+  RAM               3GB for each Metadata Server daemon
+  Disk Space        2MB per daemon
+  Network           Two network interfaces (1GbE+) bonded to multiple switches
+```
+
+## Rados Gateway:
+```
+  Processor         8 cores
+  RAM               64GB
+  Disk Space        5GB SSD with RAID1
+  Network           Two network interfaces(1GbE+) bonded to multiple switches
+```
+
+## ISCSI Gateway Node:
+```
+  Processor         8 cores
+  RAM               16GB
+  Disk Space        SSD with RAID1
+  Network           Two network interfaces(1GbE+) bonded to multiple switches
+```
+
+
 # Nodes:
 
 ====================================
