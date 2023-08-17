@@ -137,6 +137,7 @@ then login to dashboard and change password
 ```
 
 # Add admin ceph SSH key to other node:
+ceph cephadm get-pub-key > ~/ceph.pub
 ssh-copy-id -f -i /etc/ceph/ceph.pub  mon1
 ssh-copy-id -f -i /etc/ceph/ceph.pub  osd1
 ssh-copy-id -f -i /etc/ceph/ceph.pub  osd2
