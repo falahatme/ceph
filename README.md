@@ -151,3 +151,12 @@ ceph orch host add  osd2 192.168.182.132   --labels _osd
 ceph orch host add  osd3 192.168.182.133   --labels _osd
 
 ```
+
+# Add Disks
+
+```
+
+ceph orch apply osd --all-available-devices
+ceph orch apply osd --device /dev/<device-name>
+
+```
