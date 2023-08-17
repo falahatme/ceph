@@ -60,8 +60,6 @@ Production nodes recommendation:
                     192.168.182.132 (hostname: osd2)
                     192.168.182.133 (hostname: osd3)
 
-    Ceph Client:    192.168.182.134
-
 ====================================
 
 # Define Hosts:
@@ -123,15 +121,33 @@ sudo chmod 644 ~/.ssh/config
 
 sudo ssh-keyscan osd1 osd2 osd3 mon1 client >> ~/.ssh/known_hosts
 
-ssh-keygen
 
-sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd1
-sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd2
-sudo ssh-copy-id -i ~/.ssh/id_rsa.pub osd3
-sudo ssh-copy-id -i ~/.ssh/id_rsa.pub mon1
-sudo ssh-copy-id -i ~/.ssh/id_rsa.pub client
+sudo apt-get update
+sudo apt-get install -y ceph cephadm
+
+cephadm bootstrap --mon-ip <ceph-monitor-IP>
 
 
+```
 
+then login to dashboard and change password
+
+# Hosts
+
+```
+
+# Add admin ceph SSH key to other node:
+ssh-copy-id -f -i /etc/ceph/ceph.pub  mon1
+ssh-copy-id -f -i /etc/ceph/ceph.pub  osd1
+ssh-copy-id -f -i /etc/ceph/ceph.pub  osd2
+ssh-copy-id -f -i /etc/ceph/ceph.pub  osd3
+
+
+# Add a host to cluster:
+
+ceph orch host add  mon1 192.168.182.130   --labels _monitor
+ceph orch host add  osd1 192.168.182.131   --labels _osd
+ceph orch host add  osd2 192.168.182.132   --labels _osd
+ceph orch host add  osd3 192.168.182.133   --labels _osd
 
 ```
